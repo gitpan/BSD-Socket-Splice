@@ -1,0 +1,37 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.66.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 a10fbba602adf2cc4684698e65fb072c3d88d603 Changes
+SHA1 44c8528bc82c76a89045c88e1d3d349360c68f88 MANIFEST
+SHA1 b8276fdfc93768973ab1375a86ec5c94e3954e03 META.yml
+SHA1 fd97f0a6f8bfecbd817a701c1cc77a961d67a8da Makefile.PL
+SHA1 474e435096e8c867a116f8258b0338d377ecab5a README
+SHA1 e69eb9305ff7cffa64a589f908ce1dc38f5b7cee Splice.xs
+SHA1 0e10889823c405636bf450628fd74c99ac05a685 lib/BSD/Socket/Splice.pm
+SHA1 075e952c63274922f43e7638b6b43f26ad1aa128 ppport.h
+SHA1 2e6d46a724d72bec8870627f83278af9f1177bf2 t/BSD-Socket-Splice.t
+SHA1 8268da91cbbe17862c1e017d39d8265f25273545 t/SO_SPLICE.t
+SHA1 dbc6922d8ec92a48235c632065f6a87760e4e23c t/geterror.t
+SHA1 974f71f034983996652173110799231d0c8a2747 t/getsplice.t
+SHA1 9993d130f4fa9620a5193ecfa4ebbfda6497946b t/setsplice.t
+SHA1 d6ba959d952192f22d884c269fed2347cd4609aa t/splice.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (OpenBSD)
+
+iEYEARECAAYFAk1s4ZoACgkQaO3jKFvkT5E/xQCgn6AJ20L4e/25H7+f3sngCc9E
+XYoAni3VmB3KYwTZjpCgeeEc8Jiyqy3x
+=ihog
+-----END PGP SIGNATURE-----
