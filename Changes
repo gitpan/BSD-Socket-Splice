@@ -1,5 +1,12 @@
 Revision history for Perl extension BSD::Socket::Splice.
 
+0.02 2011-03-04
+    - provide useful text in the readme
+    - fix man page pod
+    - fix test for sparc64
+    - do not undef $@ before eval in tests
+    - include more feedback from Steffen Ullrich
+
 0.01 2011-03-01
     - include feedback from Steffen Ullrich
     - write documentation

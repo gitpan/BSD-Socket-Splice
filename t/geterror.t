@@ -7,17 +7,14 @@ use BSD::Socket::Splice 'geterror';
 
 use Test::More tests => 7;
 
-undef $@;
 eval { geterror() };
 like($@, qr/^Usage: BSD::Socket::Splice::geterror\(so\) /,
     "geterror function does not take 0 arguments");
 
-undef $@;
 eval { geterror("foo", "bar") };
 like($@, qr/^Usage: BSD::Socket::Splice::geterror\(so\) /,
     "geterror function does not take 2 arguments");
 
-undef $@;
 eval { geterror("foo") };
 like($@, qr/^Bad filehandle: foo /, "geterror function needs 1 filehandle");
 

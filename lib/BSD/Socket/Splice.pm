@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(setsplice getsplice geterror SO_SPLICE);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 require XSLoader;
 XSLoader::load('BSD::Socket::Splice', $VERSION);
@@ -40,16 +40,19 @@ BSD::Socket::Splice - Perl interface to OpenBSD socket splicing
 
 The BSD::Socket::Splice module implements a Perl interface to OpenBSD
 socket splicing.
-Compared to the manual approach with pack() and setsockopt(), it
-provides a convenient way to access the necessary system-calls.
+This allows zero-copy data transfer between TCP sockets.
+Compared to invoking the system calls manually with pack() and
+setsockopt(), the module provides a convenient and machine independent
+way to access the kernel.
 
 Nothing is exported by default, the following functions can be
 exported on demand:
 
 =over 4
 
-=item L<setsplice>($so, $sosp), L<setsplice>($so, $sosp, $max),
-L<setsplice>($so)
+=item B<setsplice($so, $sosp)>,
+B<setsplice($so, $sosp, $max)>,
+B<setsplice($so)>
 
 Splice together the source socket $so and the drain socket $sosp.
 Then the kernel will move network data from $so to $sosp without
@@ -69,19 +72,19 @@ or if the optional maximum has been reached.
 An existing splicing can be dissolved manually by using the third
 form.
 
-=item L<getsplice>($so)
+=item B<getsplice($so)>
 
 Return the number of bytes already transfered from this socket by
 splicing.
 
-=item L<geterror>($so)
+=item B<geterror($so)>
 
 Return the error number attached to this socket.
 This is not specific to splicing but is added here for convenience.
 All errors during data transfer can be retrieved from the source
 socket.
 
-=item L<SO_SPLICE>
+=item B<SO_SPLICE>
 
 Return the kernel constant for the socket splicing socket option.
 It is not necessary to use this constant as the kernel interface
@@ -92,9 +95,9 @@ is encapsulated by this module.
 =head1 ERRORS
 
 When called with bad argument types the functions carp.
-In general L<setsplice>(), L<getsplice>(), L<geterror>() set $! and
+In general setsplice(), getsplice(), geterror() set $! and
 return I<undef> in case of an error.
-L<setsplice>() and L<getsplice>() try to convert between the I<off_t>
+setsplice() and getsplice() try to convert between the I<off_t>
 value of the operating system and Perl's integer and numeric value
 automatically.
 If they fail to do so, they set $! to EINVAL and return I<undef>.
@@ -106,7 +109,7 @@ sosplice(9)
 
 =head1 AUTHOR
 
-Alexander Bluhm, E<lt>bluhm@cpan.orgE<gt>
+Alexander Bluhm E<lt>bluhm@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
