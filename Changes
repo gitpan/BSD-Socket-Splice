@@ -1,5 +1,10 @@
 Revision history for Perl extension BSD::Socket::Splice.
 
+0.03 2011-07-03
+    - add tests for idle
+    - max and idle value may be undef
+    - kernel can now handle idle timeouts, add support for sp_idle
+
 0.02 2011-03-04
     - provide useful text in the readme
     - fix man page pod

@@ -13,11 +13,14 @@ setsplice(PerlIO *so, ...)
     PREINIT:
 	PerlIO *sosp;
 	struct splice sp;
-	double max;
+	double max, idle;
 	void *optval;
 	socklen_t optlen;
 	int fd;
     CODE:
+	bzero(&sp, sizeof(sp));
+	optval = &sp;
+	optlen = sizeof(sp);
 	fd = PerlIO_fileno(so);
 	if (items <= 1) {
 		sp.sp_fd = -1;
@@ -26,9 +29,11 @@ setsplice(PerlIO *so, ...)
 		sp.sp_fd = PerlIO_fileno(sosp);
 	}
 	if (items <= 2) {
+		/* use simplified syscall interface */
 		optval = &sp.sp_fd;
 		optlen = sizeof(sp.sp_fd);
-	} else if (items == 3) {
+	}
+	if (items >= 3) {
 		if (SvUOK(ST(2))) {
 			sp.sp_max = SvUV(ST(2));
 		} else if (SvIOK(ST(2))) {
@@ -40,16 +45,39 @@ setsplice(PerlIO *so, ...)
 				errno = EINVAL;
 				XSRETURN_UNDEF;
 			}
-		} else {
+		} else if (SvOK(ST(2))) {
 			croak("Non numeric max value for setsplice");
 		}
 		if (sp.sp_max < 0) {
 			errno = EINVAL;
 			XSRETURN_UNDEF;
 		}
+	}
+	if (items >= 4) {
+		if (SvUOK(ST(3))) {
+			sp.sp_idle.tv_sec = SvUV(ST(3));
+		} else if (SvIOK(ST(3))) {
+			sp.sp_idle.tv_sec = SvIV(ST(3));
+		} else if (SvNOK(ST(3))) {
+			idle = SvNV(ST(3));
+			sp.sp_idle.tv_sec = (long)floor(idle);
+			idle -= (double)sp.sp_idle.tv_sec;
+			if (fabs(idle) >= 1.) {
+				errno = EINVAL;
+				XSRETURN_UNDEF;
+			}
+			sp.sp_idle.tv_usec = (long)floor(1000000 * idle);
+		} else if (SvOK(ST(3))) {
+			croak("Non numeric idle value for setsplice");
+		}
+		if (sp.sp_idle.tv_sec < 0 || sp.sp_idle.tv_usec < 0) {
+			errno = EINVAL;
+			XSRETURN_UNDEF;
+		}
 		optval = &sp;
 		optlen = sizeof(sp);
-	} else {
+	}
+	if (items >= 5) {
 		croak("Too many arguments for setsplice");
 	}
 	if (setsockopt(fd, SOL_SOCKET, SO_SPLICE, optval, optlen) == -1)

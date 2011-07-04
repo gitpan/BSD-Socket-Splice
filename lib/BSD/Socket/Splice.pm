@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(setsplice getsplice geterror SO_SPLICE);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 require XSLoader;
 XSLoader::load('BSD::Socket::Splice', $VERSION);
@@ -31,6 +31,7 @@ BSD::Socket::Splice - Perl interface to OpenBSD socket splicing
   $sosp = new IO::Socket;
   setsplice($so, $sosp);
   setsplice($so, $sosp, $max);
+  setsplice($so, $sosp, $max, $idle);
   setsplice($so);
 
   $len = getsplice($so);
@@ -52,6 +53,7 @@ exported on demand:
 
 =item B<setsplice($so, $sosp)>,
 B<setsplice($so, $sosp, $max)>,
+B<setsplice($so, $sosp, $max, $idle)>,
 B<setsplice($so)>
 
 Splice together the source socket $so and the drain socket $sosp.
@@ -66,10 +68,12 @@ has been moved.
 If that has happened, a second call pointing to the same maximum
 will succeed and move the outstanding data.
 
+The third form allows to specify an idle timeout for the connection.
+
 Splicing of two sockets will get dissolved automatically in case
 of end-of-file at the source socket, if a read or write error occurred
 or if the optional maximum has been reached.
-An existing splicing can be dissolved manually by using the third
+An existing splicing can be dissolved manually by using the fourth
 form.
 
 =item B<getsplice($so)>

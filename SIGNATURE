@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.66.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,24 +14,24 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 d50bb55f0f32723694e9ef333dcb7a39230536c6 Changes
+SHA1 d7c661fed1c44db9c7cd4153ffb41f8680d813d4 Changes
 SHA1 44c8528bc82c76a89045c88e1d3d349360c68f88 MANIFEST
-SHA1 e52bae4241d2e3089c578809649890c61ec9e754 META.yml
+SHA1 fd7a1f1061106864cd260d9927f1e76b4243171f META.yml
 SHA1 fd97f0a6f8bfecbd817a701c1cc77a961d67a8da Makefile.PL
 SHA1 1a0ea48bf182217d1e19590aa0ea6b924d927ea6 README
-SHA1 e69eb9305ff7cffa64a589f908ce1dc38f5b7cee Splice.xs
-SHA1 69fbae2b0da03a64aeea9e86ad6f3643236dc824 lib/BSD/Socket/Splice.pm
+SHA1 952cd72f451514b6a7d1233084ba434f54561d66 Splice.xs
+SHA1 9f4b1dfadc10c13a4013c2f0711670e9c361714d lib/BSD/Socket/Splice.pm
 SHA1 075e952c63274922f43e7638b6b43f26ad1aa128 ppport.h
 SHA1 2e6d46a724d72bec8870627f83278af9f1177bf2 t/BSD-Socket-Splice.t
 SHA1 1ae0da66c353ecf65e483839624d9a3679421057 t/SO_SPLICE.t
 SHA1 61242ea21c4c934fa02064e9581619374bc74ccb t/geterror.t
 SHA1 4ef42322c39188485e6da3f8eab32dc2785b7197 t/getsplice.t
-SHA1 b4646b80857418ee09c5dfa382be6325a26c36e3 t/setsplice.t
+SHA1 524d87cd31cd55442ac1185c760bc6c0aca4cb2b t/setsplice.t
 SHA1 d6ba959d952192f22d884c269fed2347cd4609aa t/splice.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (OpenBSD)
 
-iEYEARECAAYFAk1wRd0ACgkQaO3jKFvkT5G3QwCcCthtN+nqVVacvnVmN8oeMpV7
-vTEAnieH6bSyzdLkLE4xl7FqXNKRlRIF
-=l7oq
+iEYEARECAAYFAk4Q4mMACgkQaO3jKFvkT5HPcACfZWzenn1aCUX6lYhDUPQhG0jT
+HYYAnRpXRXmbDzloGj8oohtCUIuBiQt+
+=lCRk
 -----END PGP SIGNATURE-----
