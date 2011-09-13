@@ -5,6 +5,7 @@ MANIFEST
 ppport.h
 README
 Splice.xs
+t/benchmark.t
 t/BSD-Socket-Splice.t
 t/geterror.t
 t/getsplice.t
