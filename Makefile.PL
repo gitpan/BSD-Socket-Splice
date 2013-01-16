@@ -10,6 +10,7 @@ WriteMakefile(
       (ABSTRACT_FROM  => 'lib/BSD/Socket/Splice.pm', # retrieve abstract from module
        AUTHOR         => 'Alexander Bluhm <bluhm@cpan.org>') : ()),
     LIBS              => [''], # e.g., '-lm'
+    LICENSE           => 'perl',
     DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
     INC               => '-I.', # e.g., '-I. -I/usr/include/other'
 	# Un-comment this if you add C files to link with later:

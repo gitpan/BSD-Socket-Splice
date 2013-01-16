@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(setsplice getsplice geterror SO_SPLICE);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 require XSLoader;
 XSLoader::load('BSD::Socket::Splice', $VERSION);
@@ -117,7 +117,7 @@ Alexander Bluhm E<lt>bluhm@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010,2011 by Alexander Bluhm
+Copyright (C) 2010-2013 by Alexander Bluhm
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.12.2 or,

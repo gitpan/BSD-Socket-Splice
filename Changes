@@ -1,5 +1,10 @@
 Revision history for Perl extension BSD::Socket::Splice.
 
+0.05 2013-01-16
+    - After a maximum length splice, the OpenBSD kernel returns an
+      error EFBIG now.  Adapt the tests to this behavior.
+    - Add a test for splicing with idle timeout and ETIMEDOUT error.
+
 0.04 2011-09-13
     - add test that this module is faster than pack and setsockopt
 
